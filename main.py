@@ -22,6 +22,10 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+
+        # update
+        whitestar.update(dt)
+
         # draw
         screen.fill((0, 0, 0))
 
