@@ -1,5 +1,8 @@
+# from tkinter.constants import S
 import pygame
 from constants import *
+from circleshape import CircleShape
+from player import Player
 
 def main():
     print("Starting Asteroids!")
@@ -12,6 +15,8 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    whitestar = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
     while True:
         # handle quit
         for event in pygame.event.get():
@@ -20,11 +25,15 @@ def main():
         # draw
         screen.fill((0, 0, 0))
 
+        whitestar.draw(screen)
+
         # present
         pygame.display.flip()
 
         # set 60 FPS
         dt = clock.tick(60) / 1000
+
+
 
 if __name__ == "__main__":
     main()
