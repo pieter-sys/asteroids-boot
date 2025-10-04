@@ -4,6 +4,7 @@ from constants import *
 from circleshape import CircleShape
 from player import Player
 
+
 def main():
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -15,6 +16,11 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    CircleShape.containers = (updatable, drawable)
+
     whitestar = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     while True:
@@ -24,19 +30,20 @@ def main():
                 return
 
         # update
-        whitestar.update(dt)
+        updatable.update(dt)
 
         # draw
         screen.fill((0, 0, 0))
 
-        whitestar.draw(screen)
+        screen.fill((0, 0, 0))
+        for sprite in drawable:
+            sprite.draw(screen)
 
         # present
         pygame.display.flip()
 
         # set 60 FPS
         dt = clock.tick(60) / 1000
-
 
 
 if __name__ == "__main__":
