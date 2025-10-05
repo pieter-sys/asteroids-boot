@@ -2,7 +2,7 @@ import pygame
 import constants
 import sys
 from circleshape import CircleShape
-from player import Player
+from player import Player, Shot
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 
