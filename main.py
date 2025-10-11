@@ -47,6 +47,13 @@ def main():
             if asteroid.collision(whitestar):
                 print("Game Over!")
                 sys.exit()
+        # collision detection bullets asteroids
+        for bullet in shots:
+            for asteroid in asteroids:
+                if bullet.collision(asteroid):
+                    bullet.kill()
+                    asteroid.split()
+                    break
 
         # draw
         screen.fill((0, 0, 0))
